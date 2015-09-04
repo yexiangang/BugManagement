@@ -1,0 +1,14 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=a96037d0450d18dedea72df9dd150f4682af6bac
+eclipse.preferences.version=1
+encoding//src/main/java/com/my/controller/BugAssignmentController.java=UTF-8
+encoding//src/main/java/com/my/controller/BugManageController.java=UTF-8
+encoding//src/main/java/com/my/controller/MyBugController.java=UTF-8
+encoding//src/main/java/com/my/controller/UserManageController.java=UTF-8
+encoding//src/main/java/com/my/dao/impl/CommonDaoImpl.java=UTF-8
+encoding//src/main/java/com/my/service/BugService.java=UTF-8
+encoding//src/main/java/com/my/service/impl/BugServiceImpl.java=UTF-8
+encoding//src/main/java/com/my/util/Constant.java=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/bug_detail.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/menu.jsp=UTF-8

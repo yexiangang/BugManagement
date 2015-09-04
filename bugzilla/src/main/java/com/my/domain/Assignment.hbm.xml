@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 25, 2015 11:15:05 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.my.domain.Assignment" table="assignment" catalog="bugzilla" optimistic-lock="version">
+        <id name="assignId" type="java.lang.Integer">
+            <column name="assign_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="bug" class="com.my.domain.Bug" fetch="select">
+            <column name="bug_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userByAssignedUserId" class="com.my.domain.User" fetch="select">
+            <column name="assigned_user_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userByOperateUserId" class="com.my.domain.User" fetch="select">
+            <column name="operate_user_id" not-null="true" />
+        </many-to-one>
+        <property name="status" type="string">
+            <column name="status" length="50" not-null="true" />
+        </property>
+        <property name="beginTime" type="timestamp">
+            <column name="begin_time" length="0" not-null="true" />
+        </property>
+        <property name="endTime" type="timestamp">
+            <column name="end_time" length="0" />
+        </property>
+    </class>
+</hibernate-mapping>

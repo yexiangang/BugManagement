@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 25, 2015 11:15:05 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.my.domain.Comment" table="comment" catalog="bugzilla" optimistic-lock="version">
+        <id name="commentId" type="java.lang.Integer">
+            <column name="comment_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="bug" class="com.my.domain.Bug" fetch="select">
+            <column name="bug_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="com.my.domain.User" fetch="select">
+            <column name="user_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="referComment" class="com.my.domain.Comment" fetch="select">
+        	<column name="refer_id"/>
+        </many-to-one>
+        <property name="content" type="string">
+            <column name="content" length="65535" not-null="true" />
+        </property>
+        <property name="pubTime" type="timestamp">
+            <column name="pub_time" length="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

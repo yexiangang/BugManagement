@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 25, 2015 11:15:05 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.my.domain.Project" table="project" catalog="bugzilla" optimistic-lock="version">
+        <id name="projectId" type="java.lang.Integer">
+            <column name="project_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="userByLeader" class="com.my.domain.User" fetch="select">
+            <column name="leader" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userByCreator" class="com.my.domain.User" fetch="select">
+            <column name="creator" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="50" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" not-null="true" />
+        </property>
+        <property name="projectStatus" type="string">
+            <column name="project_status" length="50" not-null="true" />
+        </property>
+        <property name="sprint" type="string">
+            <column name="sprint" length="50" not-null="true"/>
+        </property>
+        <property name="createDate" type="timestamp">
+            <column name="create_date" length="0" not-null="true" />
+        </property>
+        <set name="members" table="member" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="project_id" not-null="true" />
+            </key>
+            <one-to-many class="com.my.domain.Member" />
+        </set>
+        <set name="bugs" table="bug" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="project_id" not-null="true" />
+            </key>
+            <one-to-many class="com.my.domain.Bug" />
+        </set>
+    </class>
+</hibernate-mapping>

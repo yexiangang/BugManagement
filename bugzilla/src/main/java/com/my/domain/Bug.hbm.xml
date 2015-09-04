@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 25, 2015 11:15:05 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.my.domain.Bug" table="bug" catalog="bugzilla" optimistic-lock="version">
+        <id name="bugId" type="java.lang.Integer">
+            <column name="bug_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="project" class="com.my.domain.Project" fetch="select">
+            <column name="project_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="com.my.domain.User" fetch="select">
+            <column name="creator" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="50" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="65535" not-null="true" />
+        </property>
+        <property name="bugStatus" type="string">
+            <column name="bug_status" length="50" not-null="true" />
+        </property>
+        <property name="sprint" type="string">
+            <column name="sprint" length="50" not-null="true" />
+        </property>
+        <property name="tag" type="string">
+            <column name="tag" length="50" />
+        </property>
+        <property name="severity" type="java.lang.Byte">
+            <column name="severity" not-null="true" />
+        </property>
+        <property name="createDate" type="timestamp">
+            <column name="create_date" length="0" not-null="true" />
+        </property>
+        <set name="comments" table="comment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="bug_id" not-null="true" />
+            </key>
+            <one-to-many class="com.my.domain.Comment" />
+        </set>
+        <set name="assignments" table="assignment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="bug_id" not-null="true" />
+            </key>
+            <one-to-many class="com.my.domain.Assignment" />
+        </set>
+        <set name="files" table="file" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="bug_id" not-null="true" />
+            </key>
+            <one-to-many class="com.my.domain.UploadFile" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 25, 2015 11:15:05 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.my.domain.Member" table="member" catalog="bugzilla" optimistic-lock="version">
+        <composite-id name="id" class="com.my.domain.MemberId">
+            <key-property name="userId" type="int">
+                <column name="user_id" />
+            </key-property>
+            <key-property name="projectId" type="int">
+                <column name="project_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="project" class="com.my.domain.Project" update="false" insert="false" fetch="select">
+            <column name="project_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="user" class="com.my.domain.User" update="false" insert="false" fetch="select">
+            <column name="user_id" not-null="true" />
+        </many-to-one>
+        <property name="joinTime" type="timestamp">
+            <column name="join_time" length="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

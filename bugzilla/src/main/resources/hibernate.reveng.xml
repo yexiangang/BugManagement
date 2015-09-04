@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table-filter match-name="assignment" match-catalog="bugzilla"></table-filter>
+	<table-filter match-name="bug" match-catalog="bugzilla"></table-filter>
+	<table-filter match-name="comment" match-catalog="bugzilla"></table-filter>
+	<table-filter match-name="member" match-catalog="bugzilla"></table-filter>
+	<table-filter match-name="project" match-catalog="bugzilla"></table-filter>
+	<table-filter match-name="user" match-catalog="bugzilla"></table-filter>
+	<table-filter match-name="file" match-catalog="bugzilla"></table-filter>
+</hibernate-reverse-engineering>
